@@ -25,8 +25,7 @@ namespace EdgeFilter
         private string fileName;
         private string fileParentName;
 
-        private Bitmap sourcePrewitt;
-        private Bitmap sourceSobel;
+        private Bitmap sourceImg;
         public Bitmap resultPrewitt;
         public Bitmap resultSobel;
 
@@ -39,8 +38,7 @@ namespace EdgeFilter
             donePre = false;
             doneSob = false;
 
-            sourcePrewitt.Dispose();
-            sourceSobel.Dispose();
+            sourceImg.Dispose();
             resultPrewitt.Dispose();
             resultSobel.Dispose();
 
@@ -100,7 +98,7 @@ namespace EdgeFilter
 
         public void Button_Click_Prewitt(object sender, EventArgs e)
         {
-            if (sourcePrewitt != null)  // 画像を選択済み
+            if (sourceImg != null)  // 画像を選択済み
             {
                 if (this.Prewitt_Button.IsChecked == true)
                 {
@@ -119,7 +117,7 @@ namespace EdgeFilter
                 }
                 else
                 {
-                    DrawImage(sourcePrewitt);
+                    DrawImage(sourceImg);
                 }
             }
             else
@@ -132,7 +130,7 @@ namespace EdgeFilter
 
         public void Button_Click_Sobel(object sender, EventArgs e)
         {
-            if (sourceSobel != null)
+            if (sourceImg != null)
             {
                 if (this.Sobel_Button.IsChecked == true)
                 {
@@ -151,7 +149,7 @@ namespace EdgeFilter
                 }
                 else
                 {
-                    DrawImage(sourceSobel);
+                    DrawImage(sourceImg);
                 }
 
             }
@@ -189,14 +187,13 @@ namespace EdgeFilter
         {
 
             // 画像ファイルをBitmap型として読み込む
-            sourcePrewitt = (Bitmap)System.Drawing.Image.FromFile(@file);
-            sourceSobel = (Bitmap)System.Drawing.Image.FromFile(@file);
+            sourceImg = (Bitmap)System.Drawing.Image.FromFile(@file);
 
             // 8bit Bitmap を用意
-            resultPrewitt = new Bitmap(sourcePrewitt.Width, sourcePrewitt.Height, PixelFormat.Format8bppIndexed);
-            CreateGrayscaleImage(sourcePrewitt, resultPrewitt);  // グレイスケール化
-            resultSobel = new Bitmap(sourceSobel.Width, sourceSobel.Height, PixelFormat.Format8bppIndexed);
-            CreateGrayscaleImage(sourceSobel, resultSobel);  // グレイスケール化
+            resultPrewitt = new Bitmap(sourceImg.Width, sourceImg.Height, PixelFormat.Format8bppIndexed);
+            CreateGrayscaleImage(sourceImg, resultPrewitt);  // グレイスケール化
+            resultSobel = new Bitmap(sourceImg.Width, sourceImg.Height, PixelFormat.Format8bppIndexed);
+            CreateGrayscaleImage(sourceImg, resultSobel);  // グレイスケール化
 
         }
 

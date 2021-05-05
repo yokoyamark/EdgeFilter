@@ -22,5 +22,5 @@ Ryosuke Yokoyama (yokoyamark)
 ## Copyright
 see ./LICENSE
 
-FadingEdgeScrollView is released under the [MIT License](https://github.com/yokoyamark/EdgeFilter/blob/main/LICENSE).  
-Copyright 2020 yokoyamark  
+EdgeFilter is released under the [MIT License](https://github.com/yokoyamark/EdgeFilter/blob/main/LICENSE).  
+Copyright 2021 yokoyamark  
